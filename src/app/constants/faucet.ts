@@ -1,6 +1,6 @@
 export const FAUCET_CONFIG = {
-  /** 1回の配布量（PCE） */
-  DISTRIBUTION_AMOUNT: 0.1,
-  /** 配布間隔（時間） */
-  DISTRIBUTION_INTERVAL_HOURS: 72,
+  /** Distribution amount per request (PCE) */
+  DISTRIBUTION_AMOUNT: 100,
+  /** Distribution interval (hours) */
+  DISTRIBUTION_INTERVAL_HOURS: 24,
 } as const; 
