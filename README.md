@@ -19,8 +19,8 @@ Create a `.env.local` file and set the following environment variables:
 
 ```bash
 # Chain Config
-NEXT_PUBLIC_CHAIN_ID=11155111  # Sepolia
-NEXT_PUBLIC_RPC_URL=https://...
+NEXT_PUBLIC_CHAIN_ID=137  # Polygon Mainnet
+NEXT_PUBLIC_RPC_URL=https://polygon-rpc.com
 NEXT_PUBLIC_PCE_CONTRACT_ADDRESS=0x...
 NEXT_PUBLIC_EXPLORER_URL=https://polygonscan.com
 
@@ -72,9 +72,78 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to access th
 
 This application is designed to be deployed on [Vercel](https://vercel.com). Follow these steps to deploy:
 
-1. Import your project to Vercel
-2. Configure environment variables
-3. Enable Vercel KV
+### 1. Install Vercel CLI
+
+```bash
+npm install -g vercel
+```
+
+### 2. Login to Vercel
+
+```bash
+vercel login
+```
+
+### 3. Link Your Project
+
+```bash
+vercel link
+```
+
+### 4. Set Up Environment Variables
+
+You can set up environment variables in two ways:
+
+#### Using Vercel CLI
+
+```bash
+# Add environment variables
+vercel env add NEXT_PUBLIC_CHAIN_ID
+vercel env add NEXT_PUBLIC_RPC_URL
+vercel env add NEXT_PUBLIC_PCE_CONTRACT_ADDRESS
+vercel env add NEXT_PUBLIC_EXPLORER_URL
+vercel env add FAUCET_PRIVATE_KEY
+```
+
+#### Using Vercel Dashboard
+
+1. Go to [Vercel Dashboard](https://vercel.com/dashboard)
+2. Select your project
+3. Go to "Settings" > "Environment Variables"
+4. Add the following variables:
+   - `NEXT_PUBLIC_CHAIN_ID`
+   - `NEXT_PUBLIC_RPC_URL`
+   - `NEXT_PUBLIC_PCE_CONTRACT_ADDRESS`
+   - `NEXT_PUBLIC_EXPLORER_URL`
+   - `FAUCET_PRIVATE_KEY`
+
+### 5. Set Up Vercel KV
+
+1. Go to your project in Vercel Dashboard
+2. Navigate to "Storage" tab
+3. Click "Create Database"
+4. Select "KV" and choose your preferred region
+5. After creation, you'll get the following environment variables:
+   - `KV_URL`
+   - `KV_REST_API_URL`
+   - `KV_REST_API_TOKEN`
+   - `KV_REST_API_READ_ONLY_TOKEN`
+6. Add all these variables to your project's environment variables
+
+Note: All these variables are required for Vercel KV to work properly, even in development environment.
+
+For local development, you can find these values in the Vercel Dashboard:
+
+1. Go to your project
+2. Navigate to "Storage" > "KV"
+3. Click "Quick Copy" next to ".env.local"
+4. Paste the contents into your `.env.local` file
+
+### 6. Deploy
+
+```bash
+vercel deploy
+```
 
 For more details, refer to the [Vercel documentation](https://vercel.com/docs).
 
